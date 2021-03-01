@@ -209,6 +209,7 @@ ForceBuyResponse = TypeVar('ForceBuyResponse', TradeSchema, StatusMsg)
 
 
 class LockModel(BaseModel):
+    id: int
     active: bool
     lock_end_time: str
     lock_end_timestamp: int
@@ -221,6 +222,11 @@ class LockModel(BaseModel):
 class Locks(BaseModel):
     lock_count: int
     locks: List[LockModel]
+
+
+class DeleteLockRequest(BaseModel):
+    pair: Optional[str]
+    lockid: Optional[int]
 
 
 class Logs(BaseModel):
